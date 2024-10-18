@@ -1,13 +1,30 @@
-{% load static %}
+{% load static %}  {# Carrega a tag 'static' do Django para utilizar arquivos estáticos, como imagens e CSS #}
 
 <header class="flex justify-between px-5 py-3 bg-primary">
-  <span class="text-white text-2xl">USAFA</span>
+  <!-- Cabeçalho do site com classes de estilo do Tailwind CSS para alinhamento e cores -->
+
+  <span class="text-white text-2xl">
+    <!-- Link para a página inicial usando o nome da URL registrado no 'urls.py' -->
+    <a href="{% url 'home' %}">USAFA</a>
+  </span>
+  
   <div class="flex gap-3 items-center">
+    <!-- Div para agrupar os links e o ícone de usuário -->
     <div class="text-white">
-      <span class="underline hover:cursor-pointer">Criar Conta</span>
-      <span>/</span>
-      <span class="underline hover:cursor-pointer">Acessar Conta</span>
+      <!-- Link para a página de registro (criar conta) -->
+      <span class="underline hover:cursor-pointer">
+        <a href="{% url 'registro' %}">Criar Conta</a>
+      </span>
+      
+      <span>/</span>  {# Separador visual entre os links #}
+      
+      <!-- Link para a página de login (acessar conta) -->
+      <span class="underline hover:cursor-pointer">
+        <a href="{% url 'login' %}">Acessar Conta</a>
+      </span>
     </div>
+    
+    <!-- Imagem de ícone de usuário, com caminho para o arquivo estático 'person.svg' -->
     <img src="{% static 'assets/icons/person.svg' %}" alt="icone pessoa" />
   </div>
 </header>

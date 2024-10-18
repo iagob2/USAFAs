@@ -232,3 +232,21 @@ def home(request):
 
 def login(request):
     return render(request, 'login/index.html')
+
+def Registro(request):
+    return render(request,'Registro/index.html')
+
+def Perfil_do_Usuario(request):
+    return render(request, 'Perfil_do_Usuario/index.html')
+
+def Cartao_Virtual(request):
+    return render(request,'Cartao_Virtual/index.html')
+
+def Marcar_Consulta(request):
+    return render(request,'Marcar_Consulta/index.html')
+
+def Endereco_das_USAFAs(request):
+    return render(request,'Endereco_das_USAFAs/index.html')
+
+def Configuracoes(request):
+    return render(request,'Configuracoes/index.html')
