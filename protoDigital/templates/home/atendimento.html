@@ -1,0 +1,10 @@
+{% load static %}
+
+<div class="rounded-xl bg-bg flex gap-4 p-5 border border-text">
+  <img src="{% static atendimento.icon %}" alt="{{ atendimento.alt }}" />
+
+  <div class="flex flex-col gap-3">
+    <span>{{ atendimento.title }}</span>
+    <p>{{ atendimento.description }}</p>
+  </div>
+</div>

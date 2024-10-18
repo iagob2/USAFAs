@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}USAFA - Home{% endblock %}
+
+{% block header %}
+{% include 'components/header.html'%} 
+{% endblock %}
+
+{% block content %}
+
+{% include 'home/banner.html'%} 
+
+<main class="container mt-12 px-4 mx-auto font-serif text-text">
+    {% include 'home/about-pg.html'%}
+
+    <hr class="mt-32 mb-32 w-full">
+
+    <section>
+        <h2 class="text-center mb-32 text-2xl font-bold">ATENDIMENTOS</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {% for atendimento in atendimentos %}
+                {% include 'home/atendimento.html' %}
+            {% endfor %}
+        
+        </div>
+    </section>
+
+    <hr class="mt-32 mb-32 w-full">
+
+    <section class="mb-32">
+        <h2 class="text-center mb-32 text-2xl font-bold">USAFAs Gerenciadas</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+            {% for usafa in usafas %}
+                {% include 'home/usafa.html' %}
+            {% endfor %}
+        
+        </div>
+    </section>
+</main>
+
+{% endblock %}
+
+{% block footer %}
+{% include 'components/footer.html'%} 
+{% endblock %}
