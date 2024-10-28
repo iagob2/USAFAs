@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 
-{% load static %}
+
 
 
 {% block title %}USAFA - Perfil Usuario{% endblock %}
 
 {% block header %}
 {% include 'components/header.html'%}
+{% endblock %}
+
+{% block content %}
 
 <main class="flex min-w-full min-h-full">
     <!-- Slider Bar -->
@@ -18,42 +21,10 @@
             <h1 class="text-2xl font-bold text-text">Perfil do Usuário</h1>
 
             <!-- Informações Basicas -->
-            <section class="flex flex-col gap-4 p-5 items-center w-full">
-                <div class="bg-bg w-full p-3 flex items-center justify-center">
-                    <span class="text-text">Informações Básicas</span>
-                </div>
-
-                <div class="flex gap-5 ">
-                    <img src="{% static 'assets/profile-tester.png' %}" alt="Foto de perfil">
-
-                    <div>
-                        <p><strong>Nome:</strong> Fulano de tal</p>
-                        <p><strong>CPF:</strong> 000.000.000-00</p>
-                        <p><strong>Email:</strong> exemplo@email.com</p>
-                        <p><strong>Telefone:</strong> (11) 99999-9999</p>
-                        <p><strong>Idade:</strong> 25 Anos</p>
-                        <p><strong>Data de Nascimento:</strong> 01/01/2000</p>
-                    </div>
-                </div>
-            </section>
+            {% include 'perfil_do_usuario/info_basicas.html'%}
             
             <!-- Endereço -->
-            <section class="flex flex-col gap-4 p-5 items-center w-full">
-                <div class="bg-bg w-full p-3 flex items-center justify-center">
-                    <span class="text-text">Endereço</span>
-                </div>
-
-                <div class="flex flex-col gap-5">
-
-                        <p><strong>CEP:</strong> 00000-000</p>
-                        <p><strong>Rua:</strong> Rua das Maças</p>
-                        <p><strong>Número da Casa:</strong> 123</p>
-                        <p><strong>Complemento:</strong> Apartamento 101</p>
-                        <p><strong>Bairro:</strong> Vila das Frutas</p>
-                        <p><strong>Cidade:</strong> Praia da Comida</p>
-                        <p><strong>Estado:</strong> MG</p>
-                </div>
-            </section>
+            {% include 'perfil_do_usuario/endereco.html'%}
         </div>
     </section>
 </main>
