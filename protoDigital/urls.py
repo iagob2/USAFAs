@@ -10,4 +10,5 @@ urlpatterns = [
     path('cartao_virtual/', views.Cartao_Virtual, name='cartao_virtual'),
     path('marcar_consulta/', views.Marcar_Consulta, name='marcar_consulta'),
     path('perfil_do_usuario/', views.Perfil_do_Usuario, name='perfil_do_usuario'),
+    path('endereco_das_usafas/', views.Endereco_das_USAFAs, name='endereco_das_usafas'),
 ]
