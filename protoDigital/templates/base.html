@@ -10,7 +10,6 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="{% static 'estilo.css' %}">
     <link
       href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
       rel="stylesheet"
@@ -36,10 +35,8 @@
     </script>
   </head>
   <body>
-    {% block header %}{% endblock %}
-    
+    {% block header %}{% endblock %} 
     {% block content %}{% endblock %} 
-    
     {% block footer %}{% endblock %}
   </body>
 </html>
