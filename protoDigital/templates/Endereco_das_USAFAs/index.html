@@ -1,15 +1,37 @@
 {% extends 'base.html' %}
 
-{% block title %}USAFA - Endereções {% endblock %}
+{% block title %}USAFA - Perfil Usuario{% endblock %}
 
-{% block header %}
+{% block header %} 
 {% include 'components/header.html'%} 
-{% endblock %}
+{% endblock %} 
 
+{% block content %}
 
+<main class="flex min-w-full min-h-full">
+  <!-- Slider Bar -->
+  {% include 'components/sliderBar.html'%}
 
+  <!-- page -->
+  <section class="w-full m-10 min-h-full">
+    <div
+      class="flex flex-col gap-4 p-5 items-center border border-text rounded-xl low-xl"
+    >
+      <button class="text-white bg-primary rounded p-2">Busca</button>
 
+      <div class="flex gap-4 w-full items-center justify-center">
+        <span><strong>Rua</strong> Nome da Rua</span>
+        <span><strong>Número</strong> 8888</span>
+        <span><strong>Bairro</strong> nome do bairro</span>
+        <span><strong>CEP</strong> 00000-000</span>
+        <span><strong>Tel</strong> (13) 99999-9999</span>
+      </div>
 
-{% block footer %}
-{% include 'components/footer.html'%} 
+      <div class="flex gap-4 w-full items-center justify-center">
+        MAPA
+    </div>
+    </div>
+  </section>
+</main>
+
 {% endblock %}
