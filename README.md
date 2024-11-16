@@ -14,13 +14,12 @@ Este projeto é um sistema de gestão para as Unidades de Saúde da Família (US
 
 ## Estrutura do Projeto
 
-- `src/`: Código fonte do sistema.
-- `public/`: Arquivos estáticos, como imagens e estilos.
-- `config/`: Arquivos de configuração.
+- `usafa/`: projeto Django
+- `protoDigital/`: App principal do sistema 
 - `README.md`: Este arquivo.
 
 ## Como Rodar o Projeto
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone https://github.com/iagob2/USAFAs.git
