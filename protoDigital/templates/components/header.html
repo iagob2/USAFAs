@@ -1,30 +1,70 @@
-{% load static %}  {# Carrega a tag 'static' do Django para utilizar arquivos estáticos, como imagens e CSS #}
+{% load static %}
 
-<header class="flex justify-between px-5 py-3 bg-primary min-h-[5vh]">
-  <!-- Cabeçalho do site com classes de estilo do Tailwind CSS para alinhamento e cores -->
-
-  <span class="text-white text-2xl">
-    <!-- Link para a página inicial usando o nome da URL registrado no 'urls.py' -->
-    <a href="{% url 'home' %}">USAFA</a>
+<header class="flex items-center justify-between px-5 py-3 bg-primary relative z-50 h-[5vh]">
+  <!-- Logo ou Nome -->
+  <span class="text-white text-2xl whitespace-nowrap">
+    <a href="{% url 'home' %}" class="hover:text-gray-300">USAFA</a>
   </span>
-  
-  <div class="flex gap-3 items-center">
-    <!-- Div para agrupar os links e o ícone de usuário -->
-    <div class="text-white">
-      <!-- Link para a página de registro (criar conta) -->
-      <span class="underline hover:cursor-pointer">
-        <a href="{% url 'registro' %}">Criar Conta</a>
-      </span>
-      
-      <span>/</span>  {# Separador visual entre os links #}
-      
-      <!-- Link para a página de login (acessar conta) -->
-      <span class="underline hover:cursor-pointer">
-        <a href="{% url 'login' %}">Acessar Conta</a>
-      </span>
+
+  <!-- Botão do Menu (Hambúrguer) -->
+  <button 
+    id="menu-toggle" 
+    class="sm:hidden text-white focus:outline-none"
+    aria-label="Abrir Menu"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+    </svg>
+  </button>
+
+  <!-- Navegação Principal -->
+  <nav 
+    id="menu" 
+    class="hidden fixed inset-0 bg-primary flex-col items-center justify-center gap-5 p-10 text-center sm:flex sm:static sm:bg-transparent sm:flex-row sm:p-0 sm:gap-5"
+  >
+    <div class="text-white text-lg sm:text-base flex flex-col sm:flex-row gap-5 items-center">
+      <a href="{% url 'registro' %}" class="underline hover:text-gray-300">
+        Criar Conta
+      </a>
+      <a href="{% url 'login' %}" class="underline hover:text-gray-300">
+        Acessar Conta
+      </a>
     </div>
+    <img 
+      src="{% static 'assets/icons/person.svg' %}" 
+      alt="Ícone pessoa" 
+      class="w-12 h-12 sm:w-8 sm:h-8"
+    />
     
-    <!-- Imagem de ícone de usuário, com caminho para o arquivo estático 'person.svg' -->
-    <img src="{% static 'assets/icons/person.svg' %}" alt="icone pessoa" />
-  </div>
+    <!-- Botão de Fechar o Menu -->
+    <button id="close-menu" class="text-white absolute top-5 right-5">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </nav>
 </header>
+
+<script>
+  // Script para abrir/fechar o menu
+  const menuToggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+  const closeMenu = document.getElementById('close-menu');
+
+  // Abre ou fecha o menu ao clicar no botão
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('hidden'); // Alterna entre mostrar ou ocultar
+  });
+
+  // Fecha o menu ao clicar no ícone de fechar
+  closeMenu.addEventListener('click', () => {
+    menu.classList.add('hidden'); // Esconde o menu
+  });
+
+  // Fecha o menu ao clicar fora dele
+  window.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+      menu.classList.add('hidden'); // Esconde o menu se o clique não for dentro do menu ou do botão
+    }
+  });
+</script>
