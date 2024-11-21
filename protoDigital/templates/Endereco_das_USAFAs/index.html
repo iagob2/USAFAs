@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}USAFA - Perfil Usuario{% endblock %}
+{% block title %}USAFA - Perfil Usuário{% endblock %}
 
 {% block header %} 
 {% include 'components/header.html'%} 
@@ -8,32 +8,38 @@
 
 {% block content %}
 
-<main class="flex min-w-full min-h-[95vh]">
+<main class="flex flex-col md:flex-row min-w-full min-h-[95vh]">
   <!-- Slider Bar -->
   {% include 'components/sliderBar.html'%}
 
-  <!-- page -->
-  <section class="w-full m-10 min-h-full">
-    <div
-      class="flex flex-col gap-4 p-5 items-center border border-text rounded-xl low-xl"
-    >
-      <button class="text-white bg-primary rounded p-2">Busca</button>
+  <!-- Page -->
+  <section class="m-5 md:m-10 min-h-full">
+    <div class="flex flex-col gap-6 p-5 items-center border border-text rounded-xl low-xl">
+      <!-- Botão de Busca -->
+      <button class="text-white bg-primary rounded p-3 w-full md:w-auto">Busca</button>
 
-      <div class="flex gap-4 w-full items-center justify-center">
-        <span><strong>Rua</strong> Nome da Rua</span>
-        <span><strong>Número</strong> 8888</span>
-        <span><strong>Bairro</strong> nome do bairro</span>
-        <span><strong>CEP</strong> 00000-000</span>
-        <span><strong>Tel</strong> (13) 99999-9999</span>
+      <!-- Informações principais -->
+      <div class="flex flex-col md:flex-row flex-wrap gap-4 w-full items-start md:items-center justify-between text-center md:text-left">
+        <span class="block md:inline"><strong>Rua:</strong> Nome da Rua</span>
+        <span class="block md:inline"><strong>Número:</strong> 8888</span>
+        <span class="block md:inline"><strong>Bairro:</strong> Nome do Bairro</span>
+        <span class="block md:inline"><strong>CEP:</strong> 00000-000</span>
+        <span class="block md:inline"><strong>Tel:</strong> (13) 99999-9999</span>
       </div>
 
+      <!-- Linha divisória -->
       <hr class="w-full" />
 
-      <div class="flex gap-4 w-full items-center justify-center">
-        MAPA
-    </div>
+      <!-- Mapa -->
+      <div class="flex flex-col items-center justify-center w-full gap-4">
+        <span>MAPA</span>
+      </div>
     </div>
   </section>
 </main>
 
+{% endblock %}
+
+{% block footer %}
+  <div class="mt-10"></div>
 {% endblock %}
