@@ -14,51 +14,14 @@
   {% include 'components/sliderBar.html'%}
 
   <!-- page -->
-  <section class="w-full m-24 min-h-full">
-    <div class="flex flex-col gap-4 items-center bg-bg rounded-xl low-xl">
-        <h2 class="text-2xl bg-primary text-white w-full p-3 rounded-t-lg">USAFA</h2>
-        <div class="flex gap-5 justify-between items-center w-full px-10">
-            <div class="flex flex-col gap-5">
-                <div class="flex flex-col gap-1">
-                    <span class="text-sm font-bold">N° Inscrição</span>
-                    <p>Fulano de Tal</p>
-                </div>
-                
-                <div>
-                    <span class="text-sm font-bold">Nome do Beneficiario</span>
-                    <p>00017932000314118</p>
-                </div>
-            </div>
-    
-            <div class="flex flex-col gap-5">
-                <div class="flex flex-col gap-1">
-                    <span class="text-sm font-bold">CPF</span>
-                    <p>499.125.366-98</p>
-                </div>
-    
-                <div>
-                    <span class="text-sm font-bold">RG</span>
-                    <p>96.896.896-2</p>
-                </div>
-    
-                <div>
-                    <span class="text-sm font-bold">CP</span>
-                    <p>11836026</p>
-                </div>
-    
-            </div>
-    
-            <div class="flex flex-col gap-5">
-                QRCODE
-            </div>
-        </div>
+  {% include 'Cartao_Virtual/cartao.html'%}
 
-        <div class="flex flex-col gap-1 p-5 w-full items-center justify-center">
-            <span class="text-sm font-bold">Central de Atendimento do  Cliente:</span>
-            <p>11 5583-7001</p>
-        </div>
-    </div>
-  </section>
+  
 </main>
 
+{% endblock %}
+
+
+{% block footer %}
+  <div class="mt-10"></div>
 {% endblock %}
