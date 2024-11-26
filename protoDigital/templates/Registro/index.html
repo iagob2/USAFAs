@@ -1,18 +1,169 @@
 {% extends 'base.html' %}
 
-{% block title %}USAFA - Cadastrar{% endblock %}
+{% block title %}USAFA - Registro{% endblock %}
 
-{% block content %}
-{% include 'components/titulo01.html'%} 
-<div class="container">
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae voluptates reprehenderit vitae inventore iusto aperiam veniam similique, corrupti consequuntur, temporibus ullam animi qui perferendis, est eos sapiente nam officiis praesentium?</p>
+{% block header %}
 
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae voluptates reprehenderit vitae inventore iusto aperiam veniam similique, corrupti consequuntur, temporibus ullam animi qui perferendis, est eos sapiente nam officiis praesentium?</p>
+<header class="flex justify-center items-center h-[10vh] bg-gray-100">
+    <h1 class="text-2xl font-bold text-primary">USAFA</h1>
+</header>
 
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae voluptates reprehenderit vitae inventore iusto aperiam veniam similique, corrupti consequuntur, temporibus ullam animi qui perferendis, est eos sapiente nam officiis praesentium?</p>
-</div>
 {% endblock %}
 
+{% block content %}
 
+<main class="flex items-center justify-center min-h-[90vh] bg-gray-50">
+    <!-- Contêiner principal -->
+    <div class="w-full max-w-2xl p-5 bg-white shadow-lg rounded-lg border border-gray-200">
+        <h2 class="text-lg font-semibold text-gray-800 text-center mb-5">Crie sua Conta</h2>
 
+        <form action="" class="flex flex-col gap-6">
+            <!-- Informações pessoais -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input 
+                    type="text" 
+                    name="cpf" 
+                    id="cpf" 
+                    placeholder="CPF:" 
+                    class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <input 
+                    type="text" 
+                    name="rg" 
+                    id="rg" 
+                    placeholder="RG:" 
+                    class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <input 
+                    type="password" 
+                    name="password" 
+                    id="password" 
+                    placeholder="Senha:" 
+                    class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <input 
+                    type="password" 
+                    name="confirm_password" 
+                    id="confirm_password" 
+                    placeholder="Confirmar Senha:" 
+                    class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <input 
+                    type="text" 
+                    name="full_name" 
+                    id="full_name" 
+                    placeholder="Nome Completo:" 
+                    class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <input 
+                    type="date" 
+                    name="birth_date" 
+                    id="birth_date" 
+                    class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <input 
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    placeholder="Email:" 
+                    class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <input 
+                    type="email" 
+                    name="confirm_email" 
+                    id="confirm_email" 
+                    placeholder="Confirmar Email:" 
+                    class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <input 
+                    type="text" 
+                    name="phone" 
+                    id="phone" 
+                    placeholder="Telefone:" 
+                    class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+            </div>
 
+            <!-- Endereço residencial -->
+            <fieldset class="border-t border-gray-300 pt-4">
+                <legend class="text-lg font-semibold text-gray-800 mb-2">Endereço Residencial</legend>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input 
+                        type="text" 
+                        name="cep" 
+                        id="cep" 
+                        placeholder="CEP:" 
+                        class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                    <input 
+                        type="text" 
+                        name="street" 
+                        id="street" 
+                        placeholder="Rua:" 
+                        class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                    <input 
+                        type="text" 
+                        name="number" 
+                        id="number" 
+                        placeholder="Número:" 
+                        class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                    <input 
+                        type="text" 
+                        name="complement" 
+                        id="complement" 
+                        placeholder="Complemento (Opcional):" 
+                        class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                    <input 
+                        type="text" 
+                        name="neighborhood" 
+                        id="neighborhood" 
+                        placeholder="Bairro:" 
+                        class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                    <input 
+                        type="text" 
+                        name="city" 
+                        id="city" 
+                        placeholder="Cidade:" 
+                        class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                    <input 
+                        type="text" 
+                        name="state" 
+                        id="state" 
+                        placeholder="Estado:" 
+                        class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                </div>
+            </fieldset>
+
+            <!-- Termos de uso -->
+            <div class="flex items-start gap-2">
+                <input 
+                    type="checkbox" 
+                    id="terms" 
+                    class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary"
+                />
+                <label 
+                    for="terms" 
+                    class="text-gray-700 cursor-pointer hover:text-primary"
+                >
+                    Concordo com os termos de uso
+                </label>
+            </div>
+
+            <!-- Botão de registro -->
+            <button 
+                type="submit" 
+                class="bg-primary text-white font-semibold rounded p-3 w-full hover:bg-primary-dark"
+            >
+                Registrar
+            </button>
+        </form>
+    </div>
+</main>
+
+{% endblock %}
