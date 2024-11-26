@@ -1,15 +1,83 @@
 {% extends 'base.html' %}
 
-{% block title %}USAFA - Consultas {% endblock %}
+{% block title %}USAFA - Perfil Usuário{% endblock %}
 
-{% block header %}
+{% block header %} 
 {% include 'components/header.html'%} 
-{% endblock %}
+{% endblock %} 
+
+{% block content %}
+
+<main class="flex min-w-full min-h-[95vh]">
+    <!-- Slider Bar -->
+    {% include 'components/sliderBar.html'%}
+  
+    <!-- page -->
+    <section class="w-full m-10 min-h-full">
+      <div
+        class="flex flex-col gap-4 p-5 border border-text rounded-xl low-xl"
+      >
+        <span class="text-destaque text-center">* Atendimento da USAFA: de segunda a sexta, das 8h às 17h. Estamos aqui para ajudar você! .</span>
+
+        <span>Agenda agora sua Consulta</span>
+
+        <form action="" class="flex flex-col gap-4 w-full">
+            <!-- Campos de entrada -->
+            <input 
+                type="text" 
+                name="" 
+                id="" 
+                placeholder="Tipo de Consulta:" 
+                class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+            
+            <div class="flex gap-4 w-full">
+                <input 
+                type="date" 
+                name="" 
+                id="" 
+                placeholder="Data:" 
+                class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+                <input 
+                type="time" 
+                name="" 
+                id="" 
+                placeholder="Horário:" 
+                class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+            />
 
 
+        </div>
+        <!-- Botão de entrar -->
+        <button 
+            type="submit" 
+            class="bg-primary text-white font-semibold rounded p-3 w-full sm:w-auto hover:bg-primary-dark"
+        >
+            Entrar
+        </button>
+
+        </form>
+
+        <hr class="w-full mt-4">
+
+        <div>
+            <div>
+                <span>"Informamos que a USAFA não estará disponível para atendimento nesta data. Agradecemos sua compreensão e estaremos prontos para atendê-lo em nosso próximo dia útil."</span>
+            </div>
+
+            <span>OU</span>
 
 
+            <div>
+                <span>"Atualmente, o atendimento da USAFA está indisponível neste horário. Por favor, entre em contato durante nosso horário de funcionamento, das 8h às 17h."</span>
+            </div>
+        </div>
 
-{% block footer %}
-{% include 'components/footer.html'%} 
+        <hr class="w-full mt-4">
+
+      </div>
+    </section>
+  </main>
+
 {% endblock %}
