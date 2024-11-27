@@ -76,8 +76,16 @@
 
         <hr class="w-full mt-4">
 
-        <div class="flex items-center gap-4">
-          <span class="font-bold">Consultas</span>
+        <div class="flex gap-4 flex-col">
+          <span class="font-bold text-center">Consultas</span>
+
+          
+
+          {% for consulta in consultas %}
+          <div class="">
+            <span>Sua consulta foi agenda para {{ consulta.data }} às {{ consulta.horario }} como {{ consulta.tipo_consulta }}</span>
+          </div>
+          {% endfor %}
         </div>
       </div>
 
