@@ -12,14 +12,12 @@
     <!-- Slider Bar -->
     {% include 'components/sliderBar.html'%}
   
-    <!-- page -->
+    <!-- Página -->
     <section class="w-full m-10 min-h-full">
-      <div
-        class="flex flex-col gap-4 p-5 border border-text rounded-xl low-xl"
-      >
-        <span class="text-destaque text-center">* Atendimento da USAFA: de segunda a sexta, das 8h às 17h. Estamos aqui para ajudar você! .</span>
+      <div class="flex flex-col gap-4 p-5 border border-text rounded-xl low-xl">
+        <span class="text-destaque text-center">* Atendimento da USAFA: de segunda a sexta, das 8h às 17h. Estamos aqui para ajudar você!</span>
 
-        <span>Agenda agora sua Consulta</span>
+        <span class="text-center font-semibold text-lg">Agende agora sua Consulta</span>
 
         <form action="" class="flex flex-col gap-4 w-full">
             <!-- Campos de entrada -->
@@ -31,65 +29,69 @@
                 class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
             />
             
-            <div class="flex gap-4 w-full">
+            <div class="flex flex-col sm:flex-row gap-4 w-full">
                 <input 
-                type="date" 
-                name="" 
-                id="" 
-                placeholder="Data:" 
-                class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
-            />
+                    type="date" 
+                    name="" 
+                    id="" 
+                    placeholder="Data:" 
+                    class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary w-full sm:w-[48%]"
+                />
                 <input 
-                type="time" 
-                name="" 
-                id="" 
-                placeholder="Horário:" 
-                class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
-            />
+                    type="time" 
+                    name="" 
+                    id="" 
+                    placeholder="Horário:" 
+                    class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary w-full sm:w-[48%]"
+                />
+            </div>
 
-
-        </div>
-        <!-- Botão de entrar -->
-        <button 
-            type="submit" 
-            class="bg-primary text-white font-semibold rounded p-3 w-full sm:w-auto hover:bg-primary-dark"
-        >
-            Entrar
-        </button>
+            <!-- Botão de Enviar -->
+            <button 
+                type="submit" 
+                class="bg-primary text-white font-semibold rounded p-3 w-full sm:w-auto hover:bg-primary-dark"
+            >
+                Agendar Consulta
+            </button>
 
         </form>
 
         <hr class="w-full mt-4">
 
-        <div class="flex items-center gap-4">
-            <div class="bg-zinc-200 rounded-xl p-2">
-                <span>"Informamos que a USAFA não estará disponível para atendimento nesta data. Agradecemos sua compreensão e estaremos prontos para atendê-lo em nosso próximo dia útil."</span>
+        <!-- Mensagens informativas -->
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+            <div class="bg-zinc-200 rounded-xl p-4 w-full sm:w-[48%]">
+                <span class="text-sm">"Informamos que a USAFA não estará disponível para atendimento nesta data. Agradecemos sua compreensão e estaremos prontos para atendê-lo em nosso próximo dia útil."</span>
             </div>
 
-            <span>OU</span>
+            <span class="text-sm sm:hidden">OU</span>
 
-
-            <div class="bg-zinc-200 rounded-xl p-2">
-                <span>"Atualmente, o atendimento da USAFA está indisponível neste horário. Por favor, entre em contato durante nosso horário de funcionamento, das 8h às 17h."</span>
+            <div class="bg-zinc-200 rounded-xl p-4 w-full sm:w-[48%]">
+                <span class="text-sm">"Atualmente, o atendimento da USAFA está indisponível neste horário. Por favor, entre em contato durante nosso horário de funcionamento, das 8h às 17h."</span>
             </div>
         </div>
 
         <hr class="w-full mt-4">
 
-        <div class="flex gap-4 flex-col">
-          <span class="font-bold text-center">Consultas</span>
+        <!-- Consultas Agendadas -->
+        <div class="flex flex-col gap-4">
+            <span class="font-bold text-center text-lg">Consultas:</span>
 
-          
-
-          {% for consulta in consultas %}
-          <div class="">
-            <span>Sua consulta foi agenda para {{ consulta.data }} às {{ consulta.horario }} como {{ consulta.tipo_consulta }}</span>
-          </div>
-          {% endfor %}
+            {% for consulta in consultas %}
+                <div class="bg-zinc-100 p-3 rounded-lg shadow-sm">
+                    <span class="text-sm">Sua consulta foi agendada para {{ consulta.data }} às {{ consulta.horario }} como {{ consulta.tipo_consulta }}.</span>
+                </div>
+            {% endfor %}
         </div>
       </div>
-
     </section>
-  </main>
+</main>
 
+{% endblock %}
+
+
+
+
+{% block footer %}
+  <div class="mt-10 md:mt-0"></div>
 {% endblock %}
