@@ -17,7 +17,8 @@
     <div class="w-full max-w-2xl p-5 bg-white shadow-lg rounded-lg border border-gray-200">
         <h2 class="text-lg font-semibold text-gray-800 text-center mb-5">Crie sua Conta</h2>
 
-        <form action="" class="flex flex-col gap-6">
+        <form action="{% url 'registro'%}" class="flex flex-col gap-6" method="post" >
+            {% csrf_token %}
             <!-- Informações pessoais -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input 

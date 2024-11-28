@@ -128,3 +128,8 @@ if DEBUG:
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = [
+    'protoDigital.models.CPFBackend',  # Ajuste o caminho conforme necessário
+    'django.contrib.auth.backends.ModelBackend',  # Esse backend mantém a funcionalidade padrão do Django
+]
