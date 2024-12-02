@@ -88,7 +88,6 @@ def home(request):
     return render(request, 'home/index.html', context)
 
 
-
 def login(request):
     if request.method == 'POST':
         # Pega os dados do formulário
@@ -113,9 +112,6 @@ def login(request):
             return render(request, 'login/index.html')
 
     return render(request, 'login/index.html')
-
-
-
 
 
 def Registro(request):
@@ -185,20 +181,38 @@ def Registro(request):
     return render(request, "Registro/index.html")
 
 
-
 def Perfil_do_Usuario(request):
-    return render(request, 'Perfil_do_Usuario/index.html')
+    user_id = request.session.get('user_id')
+    if user_id:
+        return render(request, 'Perfil_do_Usuario/index.html')
+    else:
+        return redirect('login')
 
 def Cartao_Virtual(request):
-    return render(request,'Cartao_Virtual/index.html')
+    user_id = request.session.get('user_id')
+    if user_id:
+        return render(request,'Cartao_Virtual/index.html')
+    else:
+        return redirect('login')
 
 def Marcar_Consulta(request):
-    return render(request,'Marcar_Consulta/index.html')
+    user_id = request.session.get('user_id')
+    if user_id:
+        return render(request,'Marcar_Consulta/index.html')
+    else:
+        return redirect('login')
 
 def Endereco_das_USAFAs(request):
-    return render(request,'Endereco_das_USAFAs/index.html')
-
+    user_id = request.session.get('user_id')
+    if user_id:
+        return render(request,'Endereco_das_USAFAs/index.html')
+    else:
+        return redirect('login')
 def Configuracoes(request):
-    return render(request,'Configuracoes/index.html')
+    user_id = request.session.get('user_id')
+    if user_id:
+        return render(request,'Configuracoes/index.html')
+    else:
+        return redirect('login')
 
 
