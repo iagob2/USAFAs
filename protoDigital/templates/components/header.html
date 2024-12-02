@@ -6,6 +6,8 @@
     <a href="{% url 'home' %}" class="hover:text-gray-300">USAFA</a>
   </span>
 
+  {% if not request.session.user_id %}
+
   <!-- Botão do Menu (Hambúrguer) -->
   <button
     id="menu-toggle" 
@@ -43,6 +45,8 @@
       </svg>
     </button>
   </nav>
+
+  {% endif %}
 </header>
 
 <script>
