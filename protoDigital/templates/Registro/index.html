@@ -22,16 +22,22 @@
             <!-- Informações pessoais -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input 
-                    type="text" 
+                    type="text"
                     name="cpf" 
                     id="cpf" 
-                    placeholder="CPF:" 
+                    placeholder="CPF:"
                     class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                    minlength="11"
+                    maxlength="11"
+                    required
                 />
                 <input 
                     type="text" 
                     name="rg" 
-                    id="rg" 
+                    id="rg"
+                    maxlength="9"
+                    minlength="9"
+                    required
                     placeholder="RG:" 
                     class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
                 />
@@ -39,14 +45,20 @@
                     type="password" 
                     name="password" 
                     id="password" 
-                    placeholder="Senha:" 
+                    placeholder="Senha:"
+                    minlength="8"
+                    required
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^\w\d\s]).{8,}"
                     class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <input 
                     type="password" 
                     name="confirm_password" 
                     id="confirm_password" 
-                    placeholder="Confirmar Senha:" 
+                    placeholder="Confirmar Senha:"
+                    minlength="8"
+                    required
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^\w\d\s]).{8,}"
                     class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <input 
@@ -54,32 +66,40 @@
                     name="full_name" 
                     id="full_name" 
                     placeholder="Nome Completo:" 
+                    required
+                    minlength="3"
                     class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <input 
                     type="date" 
                     name="birth_date" 
-                    id="birth_date" 
+                    id="birth_date"
+                    required
                     class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <input 
                     type="email" 
                     name="email" 
-                    id="email" 
+                    id="email"
+                    required
                     placeholder="Email:" 
                     class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <input 
                     type="email" 
                     name="confirm_email" 
-                    id="confirm_email" 
+                    id="confirm_email"
+                    required
                     placeholder="Confirmar Email:" 
                     class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <input 
                     type="text" 
                     name="phone" 
-                    id="phone" 
+                    id="phone"
+                    required
+                    minlength="11"
+                    maxlength="11"
                     placeholder="Telefone:" 
                     class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
                 />
@@ -92,14 +112,18 @@
                     <input 
                         type="text" 
                         name="cep" 
-                        id="cep" 
+                        id="cep"
+                        required
+                        minlength="8"
+                        maxlength="8"
                         placeholder="CEP:" 
                         class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                     <input 
                         type="text" 
                         name="street" 
-                        id="street" 
+                        id="street"
+                        required
                         placeholder="Rua:" 
                         class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
                     />
@@ -107,6 +131,7 @@
                         type="text" 
                         name="number" 
                         id="number" 
+                        required
                         placeholder="Número:" 
                         class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
                     />
@@ -122,12 +147,14 @@
                         name="neighborhood" 
                         id="neighborhood" 
                         placeholder="Bairro:" 
+                        required
                         class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                     <input 
                         type="text" 
                         name="city" 
                         id="city" 
+                        required
                         placeholder="Cidade:" 
                         class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
                     />
@@ -135,6 +162,7 @@
                         type="text" 
                         name="state" 
                         id="state" 
+                        required
                         placeholder="Estado:" 
                         class="border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary"
                     />
@@ -145,7 +173,9 @@
             <div class="flex items-start gap-2">
                 <input 
                     type="checkbox" 
-                    id="terms" 
+                    id="terms"
+                    name="terms"
+                    required
                     class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary"
                 />
                 <label 
