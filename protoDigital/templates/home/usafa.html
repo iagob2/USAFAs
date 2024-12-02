@@ -4,8 +4,11 @@
   <img src="{% static 'assets/icons/Map.svg' %}" alt="icone de localização" />
 
   <div class="flex flex-col">
-    <span class="font-bold">{{ usafa.nome }}</span>
-    <span>{{ usafa.endereco }}</span>
-    <span>{{ usafa.telefone }}</span>
+    <span class="font-bold">{{ usafa.nome_usafa }}</span>
+    <span
+      >{{ usafa.endereco_usafa_rua }}, {{ usafa.endereco_usafa_numero }} -
+      {{ usafa.endereco_usafa_bairro }}</span
+    >
+    <span>{{ usafa.telefone_usafa }}</span>
   </div>
 </div>
