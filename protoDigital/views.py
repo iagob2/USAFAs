@@ -1,11 +1,10 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth.hashers import make_password   
-from django.db.models import Q
+from django.contrib.auth.hashers import make_password, check_password   
 from protoDigital.models import Usuario, Usafa
-from django.contrib.auth import authenticate, login as auth_login
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login
+from datetime import timedelta
 # import requests
 
 # def obter_coordenadas_do_cep(cep):
@@ -157,17 +156,23 @@ def login(request):
         # Pega os dados do formulário
         cpf = request.POST.get('cpf')
         senha = request.POST.get('senha')
+        
+        try:
+            # Busca o usuário pelo CPF
+            user = Usuario.objects.get(CPF=cpf)
+            if check_password(senha, user.senha):
 
-        # Usa o backend personalizado para autenticação
-        user = authenticate(request, cpf=cpf, password=senha)
-
-        if user is not None:
-            # Realiza o login se as credenciais forem válidas
-            auth_login(request, user)
-            return redirect('home')  # Redireciona para a página inicial ou outra página desejada
-        else:
-            # Caso as credenciais sejam inválidas
-            return render(request, 'login/index.html', {'error': 'Credenciais inválidas'})
+                request.session['user_id'] = user.id_usuario
+                request.session.set_expiry(timedelta(minutes=30))
+                # Realiza o login se as credenciais forem válidas
+                return redirect('perfil_do_usuario')  # Redireciona para a página inicial ou outra página desejada
+            else:
+                # Caso as credenciais sejam inválidas
+                print("Credenciais inválidas")
+                return render(request, 'login/index.html')
+        except Usuario.DoesNotExist:
+            # Caso o usuário não seja encontrado
+            return render(request, 'login/index.html')
 
     return render(request, 'login/index.html')
 
