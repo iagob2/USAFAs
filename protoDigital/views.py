@@ -5,68 +5,6 @@ from django.contrib.auth.hashers import make_password, check_password
 from protoDigital.models import Usuario, Usafa
 from django.contrib.auth import authenticate, login
 from datetime import timedelta
-# import requests
-
-# def obter_coordenadas_do_cep(cep):
-#     # Substitua com sua chave de API do Google Maps
-#     api_key = 'SUA_CHAVE_DE_API_AQUI'
-#     url = f'https://maps.googleapis.com/maps/api/geocode/json?address={cep}&key={api_key}'
-    
-#     response = requests.get(url)
-#     data = response.json()
-    
-#     if data['status'] == 'OK':
-#         # Extrai a latitude e longitude do primeiro resultado
-#         latitude = data['results'][0]['geometry']['location']['lat']
-#         longitude = data['results'][0]['geometry']['location']['lng']
-#         return latitude, longitude
-#     else:
-#         raise ValueError(f"Não foi possível obter as coordenadas para o CEP {cep}.")
-
-# # Função para calcular a distância entre dois pontos (latitude/longitude) em quilômetros ou metros
-# def calcular_distancia(lat1, lon1, lat2, lon2, em_km=True):
-#     from math import radians, sin, cos, sqrt, atan2
-    
-#     # Converter as coordenadas de graus para radianos
-#     lat1, lon1, lat2, lon2 = map(radians, [lat1, lon1, lat2, lon2])
-    
-#     # Diferença das latitudes e longitudes
-#     dlat = lat2 - lat1
-#     dlon = lon2 - lon1
-    
-#     # Fórmula de Haversine
-#     a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
-#     c = 2 * atan2(sqrt(a), sqrt(1 - a))
-    
-#     # Raio da Terra: 6371 km ou 6371000 metros
-#     raio = 6371 if em_km else 6371000  # Raio em metros ou quilômetros
-    
-#     # Distância
-#     distancia = raio * c
-#     return distancia
-
-# # Função para buscar a Usafa mais próxima, baseada no CEP do usuário
-# def buscar_usafa_mais_proxima(usuario_cep, em_km=True):
-#     # Aqui, suponha que você tenha uma função para obter as coordenadas de latitude/longitude a partir do CEP
-#     usuario_lat, usuario_lon = obter_coordenadas_do_cep(usuario_cep)  # Supondo que você tenha essa função
-    
-#     # Inicializa a distância mínima com um valor muito alto (em metros ou km, depende do que você escolher)
-#     distancia_minima = float('300')  # Valor inicial muito alto
-#     usafa_mais_proxima = None  # Usafa mais próxima, inicialmente sem valor
-    
-#     # Busca todas as Usafas e calcula a distância
-#     for usafa in Usafa.objects.all():
-#         distancia = calcular_distancia(usuario_lat, usuario_lon, usafa.latitude, usafa.longitude, em_km)
-        
-#         # Verifica se a Usafa atual está mais próxima
-#         if distancia < distancia_minima:
-#             distancia_minima = distancia
-#             usafa_mais_proxima = usafa
-    
-#     # Retorna a Usafa mais próxima e a distância (em km ou metros)
-#     return usafa_mais_proxima
-
-
 
 def home(request):
 
