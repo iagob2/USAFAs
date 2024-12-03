@@ -4,11 +4,12 @@ from django.contrib import messages
 from django.contrib.auth.hashers import make_password, check_password   
 from protoDigital.models import Usuario, Usafa
 from django.contrib.auth import authenticate, login
-from datetime import timedelta
+from datetime import timedelta, date
 
 def home(request):
 
     # Atendimentos que as USAFAS podem realizar
+    
     atendimentos = [
         {
             'icon': 'assets/icons/Medical team.svg',
@@ -184,7 +185,17 @@ def Registro(request):
 def Perfil_do_Usuario(request):
     user_id = request.session.get('user_id')
     if user_id:
-        return render(request, 'Perfil_do_Usuario/index.html')
+
+        user = Usuario.objects.get(id_usuario=user_id)
+        today = date.today()
+        idade = today.year - user.data_nascimento.year - ((today.month, today.day) < (user.data_nascimento.month, user.data_nascimento.day))
+
+        context = {
+            'user': user,
+            'idade': idade
+        }
+
+        return render(request, 'Perfil_do_Usuario/index.html', context)
     else:
         return redirect('login')
 

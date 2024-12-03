@@ -4,13 +4,33 @@
     </div>
 
     <div class="flex flex-col gap-5">
-
-            <p><strong>CEP:</strong> 00000-000</p>
-            <p><strong>Rua:</strong> Rua das Maças</p>
-            <p><strong>Número da Casa:</strong> 123</p>
-            <p><strong>Complemento:</strong> Apartamento 101</p>
-            <p><strong>Bairro:</strong> Vila das Frutas</p>
-            <p><strong>Cidade:</strong> Praia da Comida</p>
-            <p><strong>Estado:</strong> MG</p>
+        <p><strong>CEP:</strong> <span id="cep">{{ user.CEP }}</span></p>
+        <p><strong>Rua:</strong> {{ user.endereco_usuario_rua }}</p>
+        <p><strong>Número da Casa:</strong> {{ user.endereco_usuario_numero }}</p>
+        <p><strong>Complemento:</strong> {{ user.endereco_usuario_complemento }}</p>
+        <p><strong>Bairro:</strong> {{ user.endereco_usuario_bairro }}</p>
+        <p><strong>Cidade:</strong> {{ user.endereco_usuario_cidade }}</p>
+        <p><strong>Estado:</strong> {{ user.endereco_usuario_estado }}</p>
     </div>
 </section>
+<script>
+    window.onload = function() {
+      // Máscara de CEP (xxxxx-xxx)
+      var cep = document.getElementById('cep');
+      if (cep) {
+        var cepValue = cep.textContent.replace(/\D/g, ''); // Remove qualquer caractere não numérico
+        if (cepValue.length === 8) {
+          var formattedCep = cepValue.replace(/(\d{5})(\d{3})/, '$1-$2');
+          cep.textContent = formattedCep;
+        }
+      }
+  
+      // Máscara de Número da Casa (somente números ou alfanumérico)
+      var numeroCasa = document.getElementById('numero_casa');
+      if (numeroCasa) {
+        var numeroCasaValue = numeroCasa.textContent.replace(/\D/g, ''); // Remove caracteres não numéricos
+        numeroCasa.textContent = numeroCasaValue; // Deixa como está se não tiver uma máscara específica
+      }
+    };
+  </script>
+  

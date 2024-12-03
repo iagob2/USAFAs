@@ -6,14 +6,62 @@
   </div>
 
   <div class="flex gap-5 flex-col md:flex-row">
-
     <div>
-      <p><strong>Nome:</strong> Fulano de tal</p>
-      <p><strong>CPF:</strong> 000.000.000-00</p>
-      <p><strong>Email:</strong> exemplo@email.com</p>
-      <p><strong>Telefone:</strong> (11) 99999-9999</p>
-      <p><strong>Idade:</strong> 25 Anos</p>
-      <p><strong>Data de Nascimento:</strong> 01/01/2000</p>
+      <p><strong>Nome:</strong> {{ user.nome_usuario }}</p>
+      <p><strong>CPF:</strong> <span id="cpf">{{ user.CPF }}</span></p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p>
+        <strong>Telefone:</strong>
+        <span id="telefone">{{ user.telefone }}</span>
+      </p>
+      <p><strong>Idade:</strong> {{ idade}} Anos</p>
+      <p>
+        <strong>Data de Nascimento:</strong>
+        <span id="data_nascimento">{{ user.data_nascimento }}</span>
+      </p>
     </div>
   </div>
 </section>
+
+<script>
+  window.onload = function () {
+    // Máscara de CPF (xxx.xxx.xxx-xx)
+    var cpf = document.getElementById("cpf");
+    if (cpf) {
+      var cpfValue = cpf.textContent.replace(/\D/g, ""); // Remove qualquer caractere não numérico
+      if (cpfValue.length === 11) {
+        var formattedCpf = cpfValue.replace(
+          /(\d{3})(\d{3})(\d{3})(\d{2})/,
+          "$1.$2.$3-$4"
+        );
+        cpf.textContent = formattedCpf;
+      }
+    }
+
+    // Máscara de Telefone (xx) xxxxx-xxxx
+    var telefone = document.getElementById("telefone");
+    if (telefone) {
+      var telefoneValue = telefone.textContent.replace(/\D/g, ""); // Remove caracteres não numéricos
+      if (telefoneValue.length === 11) {
+        var formattedTelefone = telefoneValue.replace(
+          /(\d{2})(\d{5})(\d{4})/,
+          "($1) $2-$3"
+        );
+        telefone.textContent = formattedTelefone;
+      }
+    }
+
+    // Máscara de Data de Nascimento (dd/mm/aaaa)
+    var dataNascimento = document.getElementById("data_nascimento");
+    if (dataNascimento) {
+      var dataNascimentoValue = dataNascimento.textContent.replace(/\D/g, ""); // Remove caracteres não numéricos
+      if (dataNascimentoValue.length === 8) {
+        var formattedDataNascimento = dataNascimentoValue.replace(
+          /(\d{2})(\d{2})(\d{4})/,
+          "$1/$2/$3"
+        );
+        dataNascimento.textContent = formattedDataNascimento;
+      }
+    }
+  };
+</script>
