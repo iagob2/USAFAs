@@ -1,53 +1,89 @@
-<section class="w-full m-5 md:m-24 min-h-full ">
-    <div class="flex flex-col gap-4 items-center bg-bg rounded-xl low-xl">
-      <!-- Título -->
-      <h2 class="text-2xl bg-primary text-white w-full p-3 rounded-t-lg text-center">USAFA</h2>
-      
-      <!-- Conteúdo principal -->
-      <div class="flex flex-col md:flex-row gap-5 justify-between items-center w-full px-5 md:px-10 py-5">
-        <!-- Coluna 1 -->
-        <div class="flex flex-col gap-5 w-full md:w-1/3">
-          <div class="flex flex-col gap-1">
-            <span class="text-sm font-bold">N° Inscrição</span>
-            <p>00017932000314118</p>
-          </div>
-          
-          <div class="flex flex-col gap-1">
-            <span class="text-sm font-bold">Nome do Beneficiário</span>
-            <p>Fulano de tal</p>
-          </div>
+<section class="w-full m-5 md:m-24 min-h-full">
+  <div class="flex flex-col gap-4 items-center bg-bg rounded-xl low-xl">
+    <!-- Título -->
+    <h2
+      class="text-2xl bg-primary text-white w-full p-3 rounded-t-lg text-center"
+    >
+      USAFA
+    </h2>
+
+    <!-- Conteúdo principal -->
+    <div
+      class="flex flex-col md:flex-row gap-5 justify-between items-center w-full px-5 md:px-10 py-5"
+    >
+      <!-- Coluna 1 -->
+      <div class="flex flex-col gap-5 w-full md:w-1/3">
+        <div class="flex flex-col gap-1">
+          <span class="text-sm font-bold">N° Inscrição</span>
+          <p>{{ user.id_usuario }}</p>
         </div>
-        
-        <!-- Coluna 2 -->
-        <div class="flex flex-col gap-5 w-full md:w-1/3">
-          <div class="flex flex-col gap-1">
-            <span class="text-sm font-bold">CPF</span>
-            <p>499.125.366-98</p>
-          </div>
-          
-          <div class="flex flex-col gap-1">
-            <span class="text-sm font-bold">RG</span>
-            <p>96.896.896-2</p>
-          </div>
-          
-          <div class="flex flex-col gap-1">
-            <span class="text-sm font-bold">CEP</span>
-            <p>11836026</p>
-          </div>
-        </div>
-        
-        <!-- Coluna 3 -->
-        <div class="flex flex-col gap-5 w-full md:w-1/3 items-center">
-          <div class="text-center">
-            <span class="text-sm font-bold">QR Code</span>
-          </div>
+
+        <div class="flex flex-col gap-1">
+          <span class="text-sm font-bold">Nome do Beneficiário</span>
+          <p>{{ user.nome_usuario }}</p>
         </div>
       </div>
-  
-      <!-- Central de Atendimento -->
-      <div class="flex flex-col gap-1 p-5 w-full items-center justify-center">
-        <span class="text-sm font-bold text-center">Central de Atendimento do Cliente:</span>
-        <p>11 5583-7001</p>
+
+      <!-- Coluna 2 -->
+      <div class="flex flex-col gap-5 w-full md:w-1/3">
+        <div class="flex flex-col gap-1">
+          <span class="text-sm font-bold">CPF</span>
+          <p id="cpf">{{ user.CPF }}</p>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <span class="text-sm font-bold">RG</span>
+          <p id="rg">{{ user.RG }}</p>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <span class="text-sm font-bold">CEP</span>
+          <p id="cep">{{ user.CEP }}</p>
+        </div>
       </div>
     </div>
-  </section>
+
+    <!-- Central de Atendimento -->
+    <div class="flex flex-col gap-1 p-5 w-full items-center justify-center">
+      <span class="text-sm font-bold text-center"
+        >Central de Atendimento do Cliente:</span
+      >
+      <p>11 5583-7001</p>
+    </div>
+  </div>
+</section>
+
+<!-- Adicionando máscaras com JavaScript -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Função para aplicar a máscara de CPF
+    function aplicarMascaraCPF(cpf) {
+      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    }
+
+    // Função para aplicar a máscara de RG
+    function aplicarMascaraRG(rg) {
+      return rg.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, "$1.$2.$3-$4");
+    }
+
+    // Função para aplicar a máscara de CEP
+    function aplicarMascaraCEP(cep) {
+      return cep.replace(/(\d{5})(\d{3})/, "$1-$2");
+    }
+
+    // Seleciona os elementos e aplica as máscaras
+    const cpfElement = document.getElementById("cpf");
+    const rgElement = document.getElementById("rg");
+    const cepElement = document.getElementById("cep");
+
+    if (cpfElement) {
+      cpfElement.textContent = aplicarMascaraCPF(cpfElement.textContent);
+    }
+    if (rgElement) {
+      rgElement.textContent = aplicarMascaraRG(rgElement.textContent);
+    }
+    if (cepElement) {
+      cepElement.textContent = aplicarMascaraCEP(cepElement.textContent);
+    }
+  });
+</script>

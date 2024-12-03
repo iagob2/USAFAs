@@ -202,7 +202,14 @@ def Perfil_do_Usuario(request):
 def Cartao_Virtual(request):
     user_id = request.session.get('user_id')
     if user_id:
-        return render(request,'Cartao_Virtual/index.html')
+
+        user = Usuario.objects.get(id_usuario=user_id)
+
+        context = {
+            'user': user
+        }
+
+        return render(request,'Cartao_Virtual/index.html', context)
     else:
         return redirect('login')
 
