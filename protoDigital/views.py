@@ -2,8 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password, check_password   
-from protoDigital.models import Usuario, Usafa
-from django.contrib.auth import authenticate, login
+from protoDigital.models import Usuario, Usafa, Consulta
 from datetime import timedelta, date
 
 def home(request):
@@ -216,9 +215,33 @@ def Cartao_Virtual(request):
 def Marcar_Consulta(request):
     user_id = request.session.get('user_id')
     if user_id:
-        return render(request,'Marcar_Consulta/index.html')
+
+        consultas = Consulta.objects.all().filter(usuario=user_id)
+
+        context = {
+            'consultas': consultas
+        }
+
+        if request.method == 'POST':
+            _date = request.POST.get("date")
+            _time = request.POST.get("time")
+            _tipo_consulta = request.POST.get('tipo_consulta')
+
+            user = Usuario.objects.get(id_usuario=user_id)
+
+            consulta = Consulta.objects.create(
+                data=_date,
+                horario=_time,
+                tipo_consulta=_tipo_consulta,
+                usuario=user
+            )
+
+            consulta.save()
+            
+        return render(request,'Marcar_Consulta/index.html', context)
     else:
         return redirect('login')
+
 
 def Endereco_das_USAFAs(request):
     user_id = request.session.get('user_id')
@@ -226,6 +249,7 @@ def Endereco_das_USAFAs(request):
         return render(request,'Endereco_das_USAFAs/index.html')
     else:
         return redirect('login')
+
 def Configuracoes(request):
     user_id = request.session.get('user_id')
     if user_id:
