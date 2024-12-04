@@ -12,25 +12,20 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url  # Importando a biblioteca para lidar com URLs de banco de dados
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
+# Secret key (mantenha em segredo em produção)
 SECRET_KEY = 'django-insecure-k2k9842rsp+#ego5trcpdvc5m25xj(bbq(y5lwbwx^f9ip*sz9'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# Segurança do Django (não usar DEBUG em produção)
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
-# Application definition
-
+# Aplicações instaladas
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +36,7 @@ INSTALLED_APPS = [
     'protoDigital',
 ]
 
+# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -51,8 +47,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# URL do projeto
 ROOT_URLCONF = 'usafa.urls'
 
+# Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -69,27 +67,17 @@ TEMPLATES = [
     },
 ]
 
+# WSGI
 WSGI_APPLICATION = 'usafa.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+# Banco de dados (conexão com PostgreSQL usando URL)
+DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://admin:avlQHvHmjdum9uHQSSjmtr76nQHmrhzK@dpg-ct85lp56l47c73cf7qng-a.oregon-postgres.render.com:5432/usafa')
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'usafa',
-        'USER': 'admin',
-        'PASSWORD': 'avlQHvHmjdum9uHQSSjmtr76nQHmrhzK',
-        'HOST': 'postgresql://admin:avlQHvHmjdum9uHQSSjmtr76nQHmrhzK@dpg-ct85lp56l47c73cf7qng-a.oregon-postgres.render.com/usafa',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600, ssl_require=True)
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
-
+# Validação de senha
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -105,51 +93,27 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
-
+# Internacionalização
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
+# Arquivos estáticos
 STATIC_URL = '/static/'
-
-# Defina a pasta onde os arquivos estáticos serão coletados (no caso de ambiente de produção)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Outros ajustes importantes podem incluir:
-STATICFILES_DIRS = [  # Diretórios adicionais onde o Django deve procurar os arquivos estáticos
-    os.path.join(BASE_DIR, 'static'),  # Caminho para os arquivos estáticos na sua aplicação
+# Diretórios adicionais de arquivos estáticos
+STATICFILES_DIRS = [
+    BASE_DIR / 'protoDigital/static',
+    BASE_DIR / 'static',
 ]
 
-# Adicione isso se estiver em modo de desenvolvimento
-if DEBUG:
-    STATICFILES_DIRS = [
-        BASE_DIR / 'protoDigital/static',  # Diretório específico para os arquivos da app
-        BASE_DIR / 'static',  # Diretório geral para outros arquivos estáticos
-    ]
-else:
-    STATICFILES_DIRS = [
-        BASE_DIR / 'staticfiles',  # Pode incluir outros diretórios para produção
-        BASE_DIR / 'protoDigital/static',
-    ]
-
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
+# Campo de chave primária
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Backends de autenticação personalizados
 AUTHENTICATION_BACKENDS = [
-    'protoDigital.models.CPFBackend',  # Ajuste o caminho conforme necessário
-    'django.contrib.auth.backends.ModelBackend',  # Esse backend mantém a funcionalidade padrão do Django
+    'protoDigital.models.CPFBackend',  # Ajuste conforme necessário
+    'django.contrib.auth.backends.ModelBackend',
 ]
