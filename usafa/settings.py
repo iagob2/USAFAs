@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -117,6 +118,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Defina a pasta onde os arquivos estáticos serão coletados (no caso de ambiente de produção)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Outros ajustes importantes podem incluir:
+STATICFILES_DIRS = [  # Diretórios adicionais onde o Django deve procurar os arquivos estáticos
+    os.path.join(BASE_DIR, 'static'),  # Caminho para os arquivos estáticos na sua aplicação
+]
 
 # Adicione isso se estiver em modo de desenvolvimento
 if DEBUG:
