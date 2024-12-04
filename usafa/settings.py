@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'usafa',
         'USER': 'admin',
         'PASSWORD': 'avlQHvHmjdum9uHQSSjmtr76nQHmrhzK',
-        'HOST': 'postgresql://admin:avlQHvHmjdum9uHQSSjmtr76nQHmrhzK@dpg-ct85lp56l47c73cf7qng-a/usafa',
+        'HOST': 'postgresql://admin:avlQHvHmjdum9uHQSSjmtr76nQHmrhzK@dpg-ct85lp56l47c73cf7qng-a.oregon-postgres.render.com/usafa',
         'PORT': '5432',
     }
 }
