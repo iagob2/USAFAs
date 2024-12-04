@@ -136,6 +136,7 @@ if DEBUG:
 else:
     STATICFILES_DIRS = [
         BASE_DIR / 'staticfiles',  # Pode incluir outros diretórios para produção
+        BASE_DIR / 'protoDigital/static',
     ]
 
 
