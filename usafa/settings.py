@@ -130,8 +130,14 @@ STATICFILES_DIRS = [  # Diretórios adicionais onde o Django deve procurar os ar
 # Adicione isso se estiver em modo de desenvolvimento
 if DEBUG:
     STATICFILES_DIRS = [
-        BASE_DIR / 'protoDigital/static',
+        BASE_DIR / 'protoDigital/static',  # Diretório específico para os arquivos da app
+        BASE_DIR / 'static',  # Diretório geral para outros arquivos estáticos
     ]
+else:
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static',  # Pode incluir outros diretórios para produção
+    ]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
