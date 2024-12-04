@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'usafa.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'usafa',
+        'USER': 'admin',
+        'PASSWORD': 'avlQHvHmjdum9uHQSSjmtr76nQHmrhzK',
+        'HOST': 'postgresql://admin:avlQHvHmjdum9uHQSSjmtr76nQHmrhzK@dpg-ct85lp56l47c73cf7qng-a/usafa',
+        'PORT': '5432',
     }
 }
 
